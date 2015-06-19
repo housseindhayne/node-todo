@@ -2,14 +2,14 @@
   {
     "name": "The Book of Trees",
     "price": 19,
-    "cover": "img/TheBookOfTrees.jpg" ,
+    "cover": "/img/TheBookOfTrees.jpg" ,
     "likes":0,
     "dislikes":0
   },
   {
     "name": "Program or be Programmed",
     "price": 8,
-    "cover": "img/programOrBeProgrammed.jpg" ,
+    "cover": "/img/programOrBeProgrammed.jpg" ,
     "likes":0,
     "dislikes":0
   }
