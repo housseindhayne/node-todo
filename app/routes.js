@@ -1,4 +1,5 @@
 var Todo = require('./models/todo');
+var Book = require('./models/book');
 
 function getTodos(res){
 	Todo.find(function(err, todos) {
@@ -11,42 +12,53 @@ function getTodos(res){
 		});
 };
 
+function getBooks(res){
+	Book.find(function(err, books) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+
+			res.json(books); // return all books in JSON format
+		});
+};
+
 module.exports = function(app) {
 
 	// api ---------------------------------------------------------------------
-	// get all todos
-	app.get('/api/todos', function(req, res) {
+	// get all books
+	app.get('/api/books', function(req, res) {
 
-		// use mongoose to get all todos in the database
-		getTodos(res);
+		// use mongoose to get all books in the database
+		getBooks(res);
 	});
 
-	// create todo and send back all todos after creation
-	app.post('/api/todos', function(req, res) {
+	// create book and send back all books after creation
+	app.post('/api/books', function(req, res) {
 
-		// create a todo, information comes from AJAX request from Angular
-		Todo.create({
+		// create a book, information comes from AJAX request from Angular
+		Book.create({
 			text : req.body.text,
 			done : false
-		}, function(err, todo) {
+		}, function(err, book) {
 			if (err)
 				res.send(err);
 
 			// get and return all the todos after you create another
-			getTodos(res);
+			getBooks(res);
 		});
 
 	});
 
-	// delete a todo
-	app.delete('/api/todos/:todo_id', function(req, res) {
-		Todo.remove({
+	// delete a book
+	app.delete('/api/books/:book_id', function(req, res) {
+		Book.remove({
 			_id : req.params.todo_id
-		}, function(err, todo) {
+		}, function(err, book) {
 			if (err)
 				res.send(err);
 
-			getTodos(res);
+			getBooks(res);
 		});
 	});
 

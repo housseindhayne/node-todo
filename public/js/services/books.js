@@ -1,9 +1,13 @@
 app.factory('books', ['$http', function($http) {
-  return $http.get('/booksData.json')
-         .success(function(data) {
-           return data;
-         })
-         .error(function(data) {
-           return data;
-         });
+  return {
+  			get : function() {
+  				return $http.get('/api/books');
+  			},
+  			create : function(bookData) {
+  				return $http.post('/api/books', bookData);
+  			},
+  			delete : function(id) {
+  				return $http.delete('/api/books/' + id);
+  			}
+  		}
 }]);
