@@ -1,5 +1,7 @@
 app.controller('MainController', [
         '$scope', 'books', function($scope, books) {
+            $scope.formData = {};
+            $scope.loading = true;
             $scope.title = 'Books to share';
 
             // GET =====================================================================
@@ -32,5 +34,32 @@ app.controller('MainController', [
                     $scope.products[index].reserved = 0
                 }
             }
+            $scope.add = true
+            $scope.toggleAdd = function() {
+                $scope.add = $scope.add === false ? true : false;
+            };
+
+            // CREATE ==================================================================
+            // when submitting the add form, send the text to the node API
+            $scope.createBook = function() {
+
+                // validate the formData to make sure that something is there
+                // if form is empty, nothing will happen
+                if ($scope.formData.name != undefined && $scope.formData.owner != undefined && $scope.formData.cover != undefined) {
+                    $scope.loading = true;
+
+                    // call the create function from our service (returns a promise object)
+                    books.create($scope.formData)
+
+                    // if successful creation, call our get function to get all the new books
+                    .success(function(data) {
+                        $scope.loading = false;
+                        $scope.formData = {}; // clear the form so our user is ready to enter another
+                        $scope.books = data;
+                    });
+                }
+
+            };
+
         }
 ]);

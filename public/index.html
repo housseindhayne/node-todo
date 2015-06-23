@@ -15,9 +15,23 @@
         <h2>Alpha Version</h2>
 
         <div class="header">
-            <button type="button" class="btn btn-default btn-lg" ng-click="add()">
+            <button type="button" class="btn btn-default btn-lg" ng-click="toggleAdd()">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> ADD
             </button>
+            <form>
+                <div class="form-group" ng-hide="add">
+                    <label for="name">Name</label>
+                    <input type="text"  id="name" class="form-control input-sm text-left" ng-model="formData.name">
+                    <label for="owner">Owner</label>
+                    <input type="text" id="owner" label="owner" class="form-control  input-sm text-left" ng-model="formData.owner">
+                    <label for="cover">Cover url</label>
+                    <input type="text" id="cover" label="cover url" class="form-control input-sm text-left" ng-model="formData.cover">
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="createBook()">Create</button>
+                </div>
+
+                <!-- createToDo() WILL CREATE NEW TODOS -->
+
+            </form>
         </div>
         <div ng-repeat="product in products" class="col-md-3">
             <div class="thumbnail">
@@ -44,7 +58,6 @@
 
 <!-- Controllers -->
 <script src="js/controllers/MainController.js"></script>
-<script src="js/popupModal.js"></script>
 
 
 </body>

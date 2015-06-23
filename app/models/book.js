@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 
 module.exports = mongoose.model('Book', {
-	text : {type : String, default: ''}
+	name : {type : String, default: ''},
+	owner : {type : String, default: ''},
+	cover : {type : String, default: ''},
 });

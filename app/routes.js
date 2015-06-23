@@ -38,13 +38,14 @@ module.exports = function(app) {
 
 		// create a book, information comes from AJAX request from Angular
 		Book.create({
-			text : req.body.text,
-			done : false
+			name : req.body.name,
+			owner : req.body.owner,
+			cover : req.body.cover
 		}, function(err, book) {
 			if (err)
 				res.send(err);
 
-			// get and return all the todos after you create another
+			// get and return all the books after you create another
 			getBooks(res);
 		});
 
