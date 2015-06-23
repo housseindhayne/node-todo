@@ -55,7 +55,7 @@ app.controller('MainController', [
                     .success(function(data) {
                         $scope.loading = false;
                         $scope.formData = {}; // clear the form so our user is ready to enter another
-                        $scope.books = data;
+                        $scope.products = data;
                     });
                 }
 
