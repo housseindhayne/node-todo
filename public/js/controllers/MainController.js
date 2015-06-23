@@ -32,10 +32,5 @@ app.controller('MainController', [
                     $scope.products[index].reserved = 0
                 }
             }
-
-            $scope.showModal = false;
-            $scope.add = function() {
-                $scope.showModal = !$scope.showModal;
-            };
         }
 ]);

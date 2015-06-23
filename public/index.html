@@ -18,19 +18,6 @@
             <button type="button" class="btn btn-default btn-lg" ng-click="add()">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> ADD
             </button>
-            <popupModal title="Login form" visible="showModal">
-                <form role="form">
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter email"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password"/>
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-            </popupModal>
         </div>
         <div ng-repeat="product in products" class="col-md-3">
             <div class="thumbnail">
