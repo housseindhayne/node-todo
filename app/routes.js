@@ -59,7 +59,10 @@ module.exports = function(app) {
                 return next(new Error('Could not load Book'));
               else {
                 // do your updates here
-                book.reservedBy = req.body.reservedBy |'---'
+                if(req.body.reservedBy =='')
+                book.reservedBy = 'no one'
+                else
+                book.reservedBy = req.body.reservedBy
 
                 book.save(function(err) {
                   if (err)
