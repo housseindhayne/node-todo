@@ -40,7 +40,8 @@ module.exports = function(app) {
 		Book.create({
 			name : req.body.name,
 			owner : req.body.owner,
-			cover : req.body.cover
+			cover : req.body.cover,
+			description: req.body.description
 		}, function(err, book) {
 			if (err)
 				res.send(err);
@@ -50,6 +51,25 @@ module.exports = function(app) {
 		});
 
 	});
+
+	// update book and send back all books after creation
+    	app.post('/api/books/:book_id', function(req, res) {
+    	    Book.findById(req.params.book_id, function(err,book) {
+              if (!book)
+                return next(new Error('Could not load Book'));
+              else {
+                // do your updates here
+                book.reservedBy = req.body.reservedBy |'---'
+
+                book.save(function(err) {
+                  if (err)
+                    console.log('error')
+                  else
+                    console.log('success')
+                });
+              }});
+            });
+
 
 	// delete a book
 	app.delete('/api/books/:book_id', function(req, res) {

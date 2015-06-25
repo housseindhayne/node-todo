@@ -19,21 +19,6 @@ app.controller('MainController', [
                 $scope.loading = false;
             });
 
-            $scope.plusOne = function(index) {
-                $scope.products[index].likes += 1;
-            };
-            $scope.minusOne = function(index) {
-                $scope.products[index].dislikes += 1;
-            };
-            $scope.reserve = function(index) {
-                if ($scope.products[index].reserved == 0) {
-                    $scope.products[index].reserve = 'release'
-                    $scope.products[index].reserved = 1
-                } else {
-                    $scope.products[index].reserve = 'reserve'
-                    $scope.products[index].reserved = 0
-                }
-            }
             $scope.add = true
             $scope.toggleAdd = function() {
                 $scope.add = $scope.add === false ? true : false;
@@ -60,6 +45,11 @@ app.controller('MainController', [
                 }
 
             };
+
+            $scope.reserveBook = function(bookData){
+
+            books.update(bookData._id,{reservedBy: bookData.reservedBy})
+            }
 
         }
 ]);

@@ -21,11 +21,16 @@
             <form>
                 <div class="form-group" ng-hide="add">
                     <label for="name">Name</label>
-                    <input type="text"  id="name" class="form-control input-sm text-left" ng-model="formData.name">
+                    <input type="text" id="name" class="form-control input-lg text-left" ng-model="formData.name">
                     <label for="owner">Owner</label>
-                    <input type="text" id="owner" label="owner" class="form-control  input-sm text-left" ng-model="formData.owner">
+                    <input type="text" id="owner" label="owner" class="form-control  input-lg text-left"
+                           ng-model="formData.owner">
                     <label for="cover">Cover url</label>
-                    <input type="text" id="cover" label="cover url" class="form-control input-sm text-left" ng-model="formData.cover">
+                    <input type="text" id="cover" label="cover url" class="form-control input-lg text-left"
+                           ng-model="formData.cover">
+                    <label for="description">Description</label>
+                    <textarea id="description" label="description" rows="4" class="form-control input-lg text-left"
+                                               ng-model="formData.description"></textarea>
                     <button type="submit" class="btn btn-primary btn-lg" ng-click="createBook()">Create</button>
                 </div>
 
@@ -34,16 +39,19 @@
             </form>
         </div>
         <div ng-repeat="product in products" class="col-md-3">
-            <div class="thumbnail">
-                <img ng-src="{{product.cover}}" class="bookImg" >
+            <div class="thumbnail" title="{{product.description}}">
+                <img ng-src="{{product.cover}}" class="bookImg">
 
                 <p class="title">{{product.name }}</p>
 
                 <p class="owner">Owner :{{ product.owner }}</p>
+                <label>Reserved By:</label>
+                <span ng-hide="editing" ng-click="editing = true">{{product.reservedBy}}</span>
+                <form ng-show="editing" ng-submit="editing = false">
+                <input type="text" ng-model="product.reservedBy" ng-required/>
+                <button class="btn btn-primary btn-md" type="submit" ng-click="reserveBook(product)">Save</button>
+                </form>
 
-                <div class="rating">
-                    <p class="reserve" ng-click="reserve($index)">{{product.reserve}}</p>
-                </div>
             </div>
         </div>
     </div>
