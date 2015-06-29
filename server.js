@@ -9,48 +9,6 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 // configuration ===============================================================
 mongoose.connect(database.url); // connect to mongoDB database on modulus.io
-//mongoose.connection.collection('books').insert([
-//          {
-//              "name" : "habbit hawa",
-//              "cover" : "/img/TheBookOfTrees.jpg",
-//              "owner" : "Foula",
-//              "reserved" : 0
-//          }, {
-//              "name" : "habbit hawa",
-//              "cover" : "img/TheBookOfTrees.jpg",
-//              "owner" : "Foula",
-//              "reserved" : 1
-//
-//          }, {
-//              "name" : "habbit hawa",
-//              "cover" : "img/TheBookOfTrees.jpg",
-//              "owner" : "Foula",
-//              "reserved" : 1
-//
-//          }, {
-//              "name" : "habbit hawa",
-//              "cover" : "img/TheBookOfTrees.jpg",
-//              "owner" : "Foula",
-//              "reserved" : 1
-//
-//          }, {
-//              "name" : "habbit hawa",
-//              "cover" : "img/TheBookOfTrees.jpg",
-//              "owner" : "Foula",
-//              "reserved" : 1
-//
-//          }, {
-//              "name" : "habbit hawa",
-//              "cover" : "img/TheBookOfTrees.jpg",
-//              "owner" : "Foula",
-//              "reserved" : 1
-//
-//          }
-//  ], function(err, result) {
-//      if (err)
-//          throw err;
-//      console.log(result);
-//  })
 
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 app.use(morgan('dev')); // log every request to the console
